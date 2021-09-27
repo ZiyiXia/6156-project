@@ -47,7 +47,7 @@ def get_by_prefix(db_schema, table_name, column_name, prefix):
 @app.route('/users/<prefix>')
 def get_users_by_prefix(prefix):
     res = UserResource.get_by_name_prefix(prefix)
-    rsp = Response(json.dumps(res), status=200, content_type="application/json")
+    rsp = Response(json.dumps(res, default=str), status=200, content_type="application/json")
     return rsp
 
 if __name__ == '__main__':

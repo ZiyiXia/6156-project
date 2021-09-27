@@ -15,6 +15,6 @@ class UserResource(BaseApplicationResource):
 
     @classmethod
     def get_by_name_prefix(cls, name_prefix):
-        res = d_service.get_by_prefix("imdbnew", "users",
+        res = d_service.get_by_prefix("cc6156_TBD", "users",
                                          "first_name", name_prefix)
         return res
