@@ -1,0 +1,17 @@
+{
+    "userID": "gtg101",
+    "nameLast": "Ferguson",
+    "nameFirst": "Donald",
+    "email": "gtg@orthanc.gov",
+    "links": [
+        {
+            "href": "/addresses/201",
+            "rel": "address"
+        },
+        {
+            "href": "/users/gtg101",
+            "rel": "self"
+        }
+    ]
+}
+

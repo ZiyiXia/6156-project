@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Web Servers and Web Application Servers</title>
+</head>
+<body>
+
+<h4>Web Application Servers</h4>
+
+<p>
+    <a href="https://flask.palletsprojects.com/en/2.0.x/">Flask</a> is a simple
+    <a href="https://en.wikipedia.org/wiki/Application_server">web application server.</a> There are many web
+    <a href="https://en.wikipedia.org/wiki/List_of_application_servers">web application servers.</a>
+    <ul>
+        <li>Java: Tomcat, Jetty, <a href="https://www.crn.com/news/storage/196901383/father-of-websphere-defects-from-ibm-to-microsoft.htm">
+            WebSphere</a>, WebLogic, ...
+        </li>
+        <li>Python: Django, Flask.</li>
+        <li>NodeJS</li>
+        <li>Microsoft IIS</li>
+        <li>... ...</li>
+        </ul>
+
+<p>
+    There are also <a href="https://en.wikipedia.org/wiki/Web_server">many web servers.</a>
+</p>
+<p>
+    Most web application servers can also function as web servers. Instead of using S3, I could have served the
+    HTML, CSS, ... ... directly from the flask application on EC2. Why did I pick the more complex configuration
+    if I could have served the content from Flask? Well, I can pound a nail in with hammer or a banana. Both will
+    work.
+</p>
+<p>
+    Web serving and
+    web application serving have different requirements. An engine that is good at web serving is not good at
+    web application serving and vice-versa.
+</p>
+</p>
+<img src="./web-server-web-app-server.png"><br>
+(https://www.educative.io/edpresso/web-server-vs-application-server)
+</p>
+<p>
+    When designing a SW system, "You cannot be a floor wax and a mouth wash. You have to pick." One of the strengths
+    of the microservices is that you can optimize SW for a specific task instead of having one large program
+    that tries to "be a floor wax and a mouth wash."
+</p>
+<p>
+    We will cover microservice concepts later in this lecture and other lectures. 
+</p>
+
+
+</body>
+</html>

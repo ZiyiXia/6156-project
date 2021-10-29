@@ -1,0 +1,22 @@
+{
+    "orderID": 2101,
+    "orderDate": "2021-09-17",
+    "totalCost": 10346.10,
+    "orderItems": [
+        {
+            "itemID": 1,
+            "someOtherFields": "... .."
+        },
+        {
+            "itemID": 2,
+            "someOtherFields": "... .."
+        }
+    ],
+    "links": [
+        {
+            "href": "/users/gtg201",
+            "rel": "user"
+        }
+    ]
+}
+
