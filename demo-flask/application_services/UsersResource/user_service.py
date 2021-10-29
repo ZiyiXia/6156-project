@@ -9,7 +9,7 @@ class UserResource(BaseApplicationResource):
 
     @classmethod
     def get_by_template(cls, template):
-        res = d_service.find_by_template("aaaaF21", "users",
+        res = d_service.find_by_template("hw1_3", "Club",
                                        template, None)
         return res
 
@@ -18,3 +18,8 @@ class UserResource(BaseApplicationResource):
         res = d_service.get_by_prefix("cc6156_TBD", "users",
                                          "first_name", name_prefix)
         return res
+
+    @classmethod
+    def get_student_name(cls, template):
+        res = d_service.find_by_template("aaaaF21", "users",
+                                         template, None)
