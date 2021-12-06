@@ -7,17 +7,20 @@ import boto3
 class NotificationMiddlewareHandler:
     sns_client = None
 
-    sns_arn = 'arn:aws:sns:us-east-2:719950645153:Notification'
+    sns_arn = 'arn:aws:sns:us-east-2:719950645153:6156-TBD'
 
-    paths = {'path': ['/api/users'], 'method': ['POST']}
+    paths = {'path': ['/', '/api'], 'method': ['GET', 'POST', 'DELETE', 'PUSH']}
 
     def __init__(self):
         pass
 
     @classmethod
     def get_client(cls):
+        ACCESS_ID = 'AKIA2PIDHA6QULZ2MRNR'
+        ACCESS_KEY = 'ZHRr8Q0aJMsGbf4Qhsx+flWKcD0WPL5wl6yrEqc+'
         if NotificationMiddlewareHandler.sns_client is None:
             NotificationMiddlewareHandler.sns_client = boto3.client('sns', region_name='us-east-2')
+            # NotificationMiddlewareHandler.sns_client = boto3.resource('sns', region_name='us-east-2')
 
         return NotificationMiddlewareHandler.sns_client
 
@@ -33,10 +36,8 @@ class NotificationMiddlewareHandler:
 
     @staticmethod
     def notify(request, response):
-        if request.path in NotificationMiddlewareHandler.paths['path'] and request.method in \
-                NotificationMiddlewareHandler.paths['method']:
-            message = {'path': request.path, 'method': request.method}
-            NotificationMiddlewareHandler.send_message(NotificationMiddlewareHandler.sns_arn, message)
-            response = message
+        message = {'path': request.path, 'method': request.method}
+        NotificationMiddlewareHandler.send_message(NotificationMiddlewareHandler.sns_arn, message)
+        response = message
         print("done")
         return response
