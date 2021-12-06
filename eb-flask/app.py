@@ -38,11 +38,11 @@ g_bp = app.blueprints.get("google")
 @app.before_request
 def before_request_func():
     print("before_request is running")
-    result_ok=simple_security.check_security(request,google,g_bp)
-    if not result_ok:
-        print('aaaa')
-        uu = url_for('google.login')
-        return redirect(uu)
+#     result_ok=simple_security.check_security(request,google,g_bp)
+#     if not result_ok:
+#         print('aaaa')
+#         uu = url_for('google.login')
+#         return redirect(uu)
 
 
 @app.after_request
