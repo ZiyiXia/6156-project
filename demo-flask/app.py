@@ -2,13 +2,45 @@ from flask import Flask, Response, jsonify, request
 import database_services.RDBService as d_service
 import json
 import logging
+import os
+import middleware.simple_security as simple_security
 logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger()
 logger.setLevel(logging.INFO)
 from application_services.imdb_artists_resource import IMDBArtistResource
 from application_services.UsersResource.user_service import UserResource
 from flask import Flask
+
 app = Flask(__name__)
+
+client_id = "271574228907-g60rmjm91jb3gt0r69qlhq4adookhnkg.apps.googleusercontent.com"
+client_secret = "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"
+app.secret_key = "some secret"
+
+os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
+os.environ['OAUTHLIB_RELAX_TOKEN_SCOPE'] = '1'
+
+blueprint= make_google_blueprint(
+    client_id=client_id,
+    client_secret=client_secret,
+    reprompt_consent=True,
+    scope=["profile", "email"]
+
+)
+app.register_blueprint(blueprint, url_refix="\login")
+g_bp= app.blueprints.get("google")
+
+@app.before_request
+def before_request_func():
+    print("before request is running")
+    result_ok = simple_security.check_security(request, google, g_bp)
+
+    if not result_ok:
+        return redirect(url_for('google.login'))
+@app.after_request
+def after_request_func():
+    notification.NotificationMiddlewareHandler.notify(request, response)
+    return response
 @app.route('/')
 def hello_world():
     return '<u>Hello World!</u>'
